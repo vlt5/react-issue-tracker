@@ -1,5 +1,5 @@
 # react-issue-tracker
-A sample issue tracker built with React
+A sample issue tracker built with React, along with webpack, hot reload, less.
 
 
 ## Installation
