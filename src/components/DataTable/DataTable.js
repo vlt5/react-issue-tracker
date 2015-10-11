@@ -5,74 +5,65 @@ import IssueTable from '../IssueTable';
 import Pagination from '../Pagination';
 
 class DataTable extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tableData: [],
-            pageSize: props.pageSize,
-            currentPage: 0
-        }
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         // tableData: [],
+    //         // pageSize: props.pageSize,
+    //         // currentPage: 0
+    //     }
+    // }
 
-    componentDidMount() {
-        // this.showRangeData(this.props.initialData, { start: 0, end: this.props.pageSize });
-        const tableData = this.getFilteredData(this.props.initialData, { start: 0, end: this.props.pageSize });
-        this.setState({
-            tableData: tableData
-        });
-    }
+    // componentDidMount() {
+    //     const tableData = this.getFilteredData(this.props.initialData, { start: 0, end: this.props.pageSize });
+    //     this.setState({
+    //         tableData: tableData
+    //     });
+    // }
 
-    componentWillReceiveProps(nextProps) {
-        // this.showRangeData(nextProps.initialData, { start: 0, end: this.props.pageSize });
-        const tableData = this.getFilteredData(nextProps.initialData, { start: 0, end: this.props.pageSize });
-        this.setState({
-            tableData: tableData
-        });
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     const tableData = this.getFilteredData(nextProps.initialData, { start: 0, end: this.props.pageSize });
+    //     this.setState({
+    //         tableData: tableData
+    //     });
+    // }
 
     render() {
-
-        const initialData = this.props.initialData || [];
+        // const initialData = this.props.initialData || [];
 
         return (
             <div className='DataTable'>
-                <IssueTable data={this.state.tableData} />
+                <IssueTable data={this.props.tableData} />
                 <Pagination 
-                    counts={initialData.length} 
-                    currentPage={this.state.currentPage}
-                    pageSize={this.state.pageSize} 
+                    counts={this.props.counts} 
+                    currentPage={this.props.currentPage}
+                    pageSize={this.props.pageSize} 
                     pageSizeOptions={this.props.pageSizeOptions}
-                    onPaginationChange={this.onPaginationChange.bind(this)} />
+                    onPaginationChange={this.props.onPaginationChange} />
             </div>
         );
     }
 
-    onPaginationChange(info) {
-        const tableData = this.getFilteredData(this.props.initialData, info.range);
+    // onPaginationChange(info) {
+    //     const tableData = this.getFilteredData(this.props.initialData, info.range);
 
-        this.setState({
-            pageSize: info.pageSize,
-            currentPage: info.currentPage,
-            tableData: tableData
-        });
-
-        // this.showRangeData(this.props.initialData, range);
-    }
+    //     this.setState({
+    //         pageSize: info.pageSize,
+    //         currentPage: info.currentPage,
+    //         tableData: tableData
+    //     });
+    // }
 
 
-    getFilteredData(allData, range) {
-        var data = allData || [];
-        // only if {end-start} is a portion of initialData, we do slice.
-        if (range.end - range.start < data.length) {
-            data = data.slice(range.start, range.end);
-        }
-
-        return data;
-
-        // this.setState({
-        //     tableData: data
-        // });
-    }
+    //  get the portion that will shown in table 
+    // getFilteredData(allData, range) {
+    //     var data = allData || [];
+    //     // only if {end-start} is a portion of initialData, we do slice.
+    //     if (range.end - range.start < data.length) {
+    //         data = data.slice(range.start, range.end);
+    //     }
+    //     return data;
+    // }
 
 }
 

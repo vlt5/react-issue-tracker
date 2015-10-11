@@ -1,16 +1,44 @@
 .Pagination {
     display: flex;
+    justify-content: center;
+
+
+    .Pagination-group {
+        display: flex;
+        margin-left: auto;
+    }
 
     .Pagination-items {
+
         li {
             list-style: none;
             display: inline-block;
             margin: 0 5px;
         }
 
-        .Pagination-item--disabled {
-            color: gray;
-            // cursor: not-allowed;
+        .pg-arrow {
+            cursor: pointer;
+            color: #2A96FF;
         }
+
+        .Pagination-item--disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .Pagination-item-page {
+            font-size: 13px;
+        }
+    }
+
+    .Pagination-pageSize {
+        align-self: center;
+    }
+
+    .Pagination-footnote {
+        margin-left: auto;
+        align-self: center;
+        font-size: 12px;  
+        color: #767676;
     }
 }

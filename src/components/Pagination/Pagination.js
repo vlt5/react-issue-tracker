@@ -35,22 +35,23 @@ class Pagination extends Component {
 
         return (
             <div className='Pagination'>
-                <ul className='Pagination-items'>
-                    <li onClick={this.firstPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === 0})}>&lt;&lt;</li>
-                    <li onClick={this.prevPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === 0})}>&lt;</li>
-                    <li>
-                        Page {currentPage+1} of {this.pages}
-                    </li>
-                    <li onClick={this.nextPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === this.pages-1})}>&gt;</li>
-                    <li onClick={this.lastPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === this.pages-1})}>&gt;&gt;</li>
-                </ul>
+                <div className='Pagination-group'>
+                    <ul className='Pagination-items'>
+                        <li onClick={this.firstPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === 0}, 'pg-arrow')} title='first page'>&lt;&lt;</li>
+                        <li onClick={this.prevPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === 0}, 'pg-arrow')} title='previous page'>&lt;</li>
+                        <li className='Pagination-item-page'>
+                            Page {currentPage+1} of {this.pages}
+                        </li>
+                        <li onClick={this.nextPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === this.pages-1}, 'pg-arrow')} title='next page'>&gt;</li>
+                        <li onClick={this.lastPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === this.pages-1}, 'pg-arrow')} title='last page'>&gt;&gt;</li>
+                    </ul>
 
-                <select className='Pagination-pageSize' defaultValue={pageSize} onChange={this.pageSizeChange.bind(this)}>
-                    {pageOps}
-                </select>
-
+                    <select className='Pagination-pageSize' defaultValue={pageSize} onChange={this.pageSizeChange.bind(this)}>
+                        {pageOps}
+                    </select>
+                </div>
                 <div className='Pagination-footnote'>
-                    View {range.start+1}-{range.end}
+                    View {range.start+1} - {range.end} of {counts}
                 </div>
             </div>
         );

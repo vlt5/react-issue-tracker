@@ -4,35 +4,37 @@ import React, { Component, PropTypes } from 'react';
 require('./IssueTable.less');
 
 class IssueTable extends Component {
-    // static propTypes = {
-    //     tableData: PropTypes.array
-    // }
-
-    // static defaultProps = {
-    //     tableData: []
-    // }
-
-    // componentWillReceiveProps(nextProps) {
-    //     console.log('componentWillReceiveProps -- table', nextProps);
-    // }
 
     render() {
         var data = this.props.data || [];
         var rows = data.map((d, i) => {
+            var labels = d.labels.map((label, j) => {
+                return (
+                    <span key={'issue-label-'+j} className='issue-label' style={{backgroundColor: '#'+label.color}}>{label.name}</span>
+                );
+            });
+
             return  (<tr key={'tr'+i}>
-                        <td>{d.number}</td>
-                        <td>{d.title}</td>
-                        <td>{d.labels}</td>
+                        <td>
+                            <img className='avartar' src={d.user.avatar_url} alt={d.user.login} title={d.user.login} />
+                        </td>
+                        <td>
+                            <div className='issue-title'>
+                                <a href={'/issue='+d.number+'&idx='+d.idx}>{d.title}</a>
+                                <div className='issue-number'>#{d.number}</div>
+                            </div>
+                        </td>
+                        <td>{labels}</td>
                         <td>{d.user.login}</td>
                         <td>{d.body.substr(0, 140) + '...'}</td>
                     </tr>);
         });
 
         return (
-            <table className='IssueTable table-hovered'>
+            <table className='IssueTable'>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th></th>
                         <th>Title</th>
                         <th>Labels</th>
                         <th>User</th>
@@ -45,6 +47,14 @@ class IssueTable extends Component {
             </table>
         );
     }
+
+    // viewDetail(id) {
+    //     console.log(id);
+
+    //     var newUrl = '/id/' + id;
+    //     window.history.pushState(null, null, newUrl);
+
+    // }
 }
 
 export default IssueTable;
