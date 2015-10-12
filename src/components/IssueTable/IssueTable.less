@@ -1,11 +1,13 @@
+@import '../variables.less';
+
 .IssueTable {
-    height: 400px;
-    overflow-y: auto;
+    // height: 1000px;
+    // overflow-y: auto;
     display: block;
 
     thead {
         th {
-            color: #2A96FF;
+            color: @issue-title-color;
             padding: 10px;
             font-size: 16px;
             font-weight: 400;
@@ -15,6 +17,10 @@
     tbody {
         a {
             color: black;
+
+            &:hover {
+                color: @issue-title-hovered;
+            }
         }
 
         td {
@@ -22,11 +28,11 @@
         }
 
         tr:hover td {
-            background-color: #f00;
+            background-color: @issue-table-hover-row-bg;
         }
 
         tr:nth-child(odd) {
-            background-color: #eff7ff;
+            background-color: @issue-table-odd-row-bg;
         }
 
         .avartar {

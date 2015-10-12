@@ -1,6 +1,6 @@
 'use strict';
-
 import React, { Component, PropTypes } from 'react';
+
 require('./IssueTable.less');
 
 class IssueTable extends Component {
@@ -47,14 +47,6 @@ class IssueTable extends Component {
             </table>
         );
     }
-
-    // viewDetail(id) {
-    //     console.log(id);
-
-    //     var newUrl = '/id/' + id;
-    //     window.history.pushState(null, null, newUrl);
-
-    // }
 }
 
 export default IssueTable;

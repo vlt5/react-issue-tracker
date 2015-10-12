@@ -1,3 +1,5 @@
+@import '../variables.less';
+
 .IssueDetail {
 
     .IssueDetail-header {
@@ -35,14 +37,15 @@
             position: relative;
             top: -3px;
             &.open {
-                background-color: #69C83A;
+                background-color: @issue-state-open-bg;
+            }
+
+            &.closed {
+                background-color: @issue-state-closed-bg;
             }
         }
 
         margin-bottom: 20px;
     }
-
-    .IssueDetail-body {
-
-    }
+    
 }

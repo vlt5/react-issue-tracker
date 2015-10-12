@@ -4,23 +4,37 @@ require('./Comment.less');
 
 class Comment extends Component {
 
-    createMarkup(str) {
-        return { __html: str}
-    }
-
     render() {
+        var content = this.convertTagging(this.props.content);
         return (
-            <div className='comment'>
+            <div className='Comment'>
                 <img className='avartar' src={this.props.url} />
-                <div className='comment-section'>
+                <div className='Comment-section'>
                     <h3>{this.props.name}</h3>
-                    <pre dangerouslySetInnerHTML={ this.createMarkup(this.props.content)} />
+                    <pre>{content}</pre>
                 </div>
             </div>
         );
     }
+
+    /**
+     * convert @name in the input string to <a href='name'>@name</a>
+     */
+    convertTagging(str) {
+        var words = str.split(' ');
+        var newWords = words.map((name, i) => {
+            if (name[0] === '@') {
+                // remove special char from the name, in case there're special chars in the end of the name, like @name! or @name,
+                var trimedName = name.replace(/[^a-zA-Z0-9]/g, ''); 
+                return <a key={'content-'+i} href={'https://github.com/' + trimedName} > {name} </a>
+            } else {
+                return name + ' ';
+            }
+        });
+        return newWords;
+    }
 }
 
-Comment.defaultProps = { content: [] }
+Comment.defaultProps = { content: '' }
 
 export default Comment;

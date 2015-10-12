@@ -7,18 +7,6 @@ require('./Pagination.less');
 
 class Pagination extends Component {
 
-    // static defaultProps = {
-    //     data: []
-    // };
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         pageSize: props.pageSize,
-    //         currentPage: 0
-    //     }
-    // }
-
     render() {
 
         const counts = this.props.counts,
@@ -112,7 +100,5 @@ class Pagination extends Component {
         }
     }
 }
-
-Pagination.defaultProps = { pageSize: 25 }
 
 export default Pagination;
