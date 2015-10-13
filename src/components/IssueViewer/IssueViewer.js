@@ -5,6 +5,7 @@ import Request from '@typicode/pegasus';
 import page from 'page';
 import DataTable from '../DataTable';
 import IssueDetail from '../IssueDetail';
+import AppConstants from '../AppConstants';
 
 class IssueViewer extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class IssueViewer extends Component {
             data: [],
             start: 0,   // start row index
             end: props.pageSize,    // end row index
-            view: 'DATA_TABLE'
+            view: AppConstants.TABLE_VIEW
         }
     }
 
@@ -30,7 +31,7 @@ class IssueViewer extends Component {
 
     render() {
         var view;
-        if (this.state.view === 'DATA_TABLE') {
+        if (this.state.view === AppConstants.TABLE_VIEW) {
             let tableData = this.getFilteredData(this.state.data, { start: this.state.start, end: this.state.end });
             view = <DataTable 
                         tableData = {tableData}
@@ -46,7 +47,7 @@ class IssueViewer extends Component {
         }
 
         return ( 
-            <div className='IssueTracker'>
+            <div className='issue-viewer'>
                 {view}
             </div>
         );
@@ -55,6 +56,7 @@ class IssueViewer extends Component {
     /* load data and keep in state */
     loadInitialData() {
         var request = Request('/json/data.json');
+        // var request = Request(AppConstants.DATA_URL);
         request.then( 
             // success callback
             (data, xhr) => {
@@ -80,15 +82,15 @@ class IssueViewer extends Component {
 
     setupRouter() {
         page('/', (ctx) => {
-            this.setState({ view: 'DATA_TABLE' });
+            this.setState({ view: AppConstants.TABLE_VIEW });
         });
 
         page('/issue=:id&idx=:idx', (ctx) => {
-            this.setState({ view: 'ISSUE_DETAIL', issueIdx: ctx.params.idx });
+            this.setState({ view: AppConstants.DETAIL_VIEW, issueIdx: ctx.params.idx });
         });
 
         page('*', (ctx) => {
-            this.setState({ view: 'DATA_TABLE' });
+            this.setState({ view: AppConstants.TABLE_VIEW });
         });
 
         page();

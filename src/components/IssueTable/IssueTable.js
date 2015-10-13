@@ -1,14 +1,16 @@
 'use strict';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 require('./IssueTable.less');
 
 class IssueTable extends Component {
 
     render() {
-        var data = this.props.data || [];
-        var rows = data.map((d, i) => {
-            var labels = d.labels.map((label, j) => {
+        const data = this.props.data || [];
+        const rows = data.map((d, i) => {
+            let user = d.user || {};
+
+            let labels = d.labels.map((label, j) => {
                 return (
                     <span key={'issue-label-'+j} className='issue-label' style={{backgroundColor: '#'+label.color}}>{label.name}</span>
                 );
@@ -16,7 +18,7 @@ class IssueTable extends Component {
 
             return  (<tr key={'tr'+i}>
                         <td>
-                            <img className='avartar' src={d.user.avatar_url} alt={d.user.login} title={d.user.login} />
+                            <img className='avartar' src={user.avatar_url} alt={user.login} title={user.login} />
                         </td>
                         <td>
                             <div className='issue-title'>
@@ -25,13 +27,13 @@ class IssueTable extends Component {
                             </div>
                         </td>
                         <td>{labels}</td>
-                        <td>{d.user.login}</td>
+                        <td>{user.login}</td>
                         <td>{d.body.substr(0, 140) + '...'}</td>
                     </tr>);
         });
 
         return (
-            <table className='IssueTable'>
+            <table className='issue-table'>
                 <thead>
                     <tr>
                         <th></th>

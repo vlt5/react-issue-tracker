@@ -1,9 +1,22 @@
-# react-issue-tracker
-A sample issue tracker built with React, along with webpack, hot reload, less.
+# react-issue-viewer
+A sample issue viewer built with React, along with webpack, hot reload, less
 
 
-## Installation
-`npm install`  
-`npm start`  
+## Steps
+```
+# installation
+npm install
 
-visit: `http://localhost:3000/`
+# start the dev server
+npm start  
+(Then visit http://localhost:3000/)
+
+# test cases
+npm run test
+(Then visit http://localhost:3001/webpack-dev-server/test)
+
+```
+
+
+
+

@@ -1,14 +1,15 @@
-.Pagination {
-    display: flex;
-    justify-content: center;
+@import '../variables.less';
 
+.pagination {
+    .display(flex);
+    .justify-content(center);
 
-    .Pagination-group {
-        display: flex;
+    .pagination-group {
+        .display(flex);
         margin-left: auto;
     }
 
-    .Pagination-items {
+    .pagination-items {
 
         li {
             list-style: none;
@@ -21,23 +22,23 @@
             color: #2A96FF;
         }
 
-        .Pagination-item--disabled {
+        .pagination-item--disabled {
             color: #ccc;
             cursor: not-allowed;
         }
 
-        .Pagination-item-page {
+        .pagination-item-page {
             font-size: 13px;
         }
     }
 
-    .Pagination-pageSize {
-        align-self: center;
+    .pagination-pageSize {
+        .align-self(center);
     }
 
-    .Pagination-footnote {
+    .pagination-footnote {
         margin-left: auto;
-        align-self: center;
+        .align-self(center);
         font-size: 12px;  
         color: #767676;
     }

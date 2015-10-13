@@ -8,7 +8,6 @@ require('./Pagination.less');
 class Pagination extends Component {
 
     render() {
-
         const counts = this.props.counts,
               currentPage = this.props.currentPage,
               pageSize = this.props.pageSize,
@@ -22,23 +21,23 @@ class Pagination extends Component {
 
 
         return (
-            <div className='Pagination'>
-                <div className='Pagination-group'>
-                    <ul className='Pagination-items'>
-                        <li onClick={this.firstPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === 0}, 'pg-arrow')} title='first page'>&lt;&lt;</li>
-                        <li onClick={this.prevPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === 0}, 'pg-arrow')} title='previous page'>&lt;</li>
-                        <li className='Pagination-item-page'>
+            <div className='pagination'>
+                <div className='pagination-group'>
+                    <ul className='pagination-items'>
+                        <li onClick={this.firstPage.bind(this)} className={classNames({'pagination-item--disabled': currentPage === 0}, 'pg-arrow')} title='first page'>&lt;&lt;</li>
+                        <li onClick={this.prevPage.bind(this)} className={classNames({'pagination-item--disabled': currentPage === 0}, 'pg-arrow')} title='previous page'>&lt;</li>
+                        <li className='pagination-item-page'>
                             Page {currentPage+1} of {this.pages}
                         </li>
-                        <li onClick={this.nextPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === this.pages-1}, 'pg-arrow')} title='next page'>&gt;</li>
-                        <li onClick={this.lastPage.bind(this)} className={classNames({'Pagination-item--disabled': currentPage === this.pages-1}, 'pg-arrow')} title='last page'>&gt;&gt;</li>
+                        <li onClick={this.nextPage.bind(this)} className={classNames({'pagination-item--disabled': currentPage === this.pages-1}, 'pg-arrow')} title='next page'>&gt;</li>
+                        <li onClick={this.lastPage.bind(this)} className={classNames({'pagination-item--disabled': currentPage === this.pages-1}, 'pg-arrow')} title='last page'>&gt;&gt;</li>
                     </ul>
 
-                    <select className='Pagination-pageSize' defaultValue={pageSize} onChange={this.pageSizeChange.bind(this)}>
+                    <select className='pagination-pageSize' defaultValue={pageSize} onChange={this.pageSizeChange.bind(this)}>
                         {pageOps}
                     </select>
                 </div>
-                <div className='Pagination-footnote'>
+                <div className='pagination-footnote'>
                     View {range.start+1} - {range.end} of {counts}
                 </div>
             </div>

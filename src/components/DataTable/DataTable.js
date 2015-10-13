@@ -7,7 +7,7 @@ import Pagination from '../Pagination';
 class DataTable extends Component {
     render() {
         return (
-            <div className='DataTable'>
+            <div className='data-table'>
                 <IssueTable data={this.props.tableData} />
                 <Pagination 
                     counts={this.props.counts} 

@@ -37,33 +37,33 @@ class IssueDetail extends Component {
     }
 
     render() {
-        var data = this.props.data || {},
+        const data = this.props.data || {},
             user = data.user || {},
             labels = data.labels || [];
 
-        var comments = this.state.comments.map((d, i) => {
+        const comments = this.state.comments.map((d, i) => {
             let user = d.user || {};
             return <Comment key={'comment-' + i} url={user.avatar_url} name={user.login} content={d.body} />
         });
 
-        var labelSpans = labels.map((label, j) => {
+        const labelSpans = labels.map((label, j) => {
             return (
                 <span key={'issue-label-'+j} className='issue-label' style={{backgroundColor: '#'+label.color}}>{label.name}</span>
             );
         });
 
         return (
-            <div className='IssueDetail'>
-                <div className='IssueDetail-header'>
-                    <h1 className='IssueDetail-header-title'>
+            <div className='issue-detail'>
+                <div className='issue-detail-header'>
+                    <h1 className='issue-detail-header-title'>
                         {data.title} <span className={classNames('issue-state', data.state)}>{data.state}</span>
                     </h1>
                     <h2>#{data.number}</h2>
                     <div className='labels'>{labelSpans}</div>
                 </div>
-                <div className='IssueDetail-body'>
+                <div className='issue-detail-body'>
                     <Comment url={user.avatar_url} name={user.login} content={data.body} />
-                    <div className='IssueDetail-body-comment'>
+                    <div className='issue-detail-body-comment'>
                         {comments}
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import AppConstants from '../AppConstants';
 require('./Comment.less');
 
 class Comment extends Component {
@@ -7,9 +7,9 @@ class Comment extends Component {
     render() {
         var content = this.convertTagging(this.props.content);
         return (
-            <div className='Comment'>
+            <div className='comment'>
                 <img className='avartar' src={this.props.url} />
-                <div className='Comment-section'>
+                <div className='comment-section'>
                     <h3>{this.props.name}</h3>
                     <pre>{content}</pre>
                 </div>
@@ -26,7 +26,7 @@ class Comment extends Component {
             if (name[0] === '@') {
                 // remove special char from the name, in case there're special chars in the end of the name, like @name! or @name,
                 var trimedName = name.replace(/[^a-zA-Z0-9]/g, ''); 
-                return <a key={'content-'+i} href={'https://github.com/' + trimedName} > {name} </a>
+                return <a key={'content-'+i} href={ AppConstants.GITHUB + trimedName } > {name} </a>
             } else {
                 return name + ' ';
             }
