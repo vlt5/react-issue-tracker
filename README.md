@@ -31,3 +31,5 @@ But finally I deceided to keep it simple according to project requirement:
 
 Lastly, there're many boilerplates out there that has already integrated with React, ES6, live reload, gulp etc... But again, I kind of feel it's too much for this simple project, so I make my own boilerplate. Whenever I need something, I simply `npm install --save` it and it's much more fun!  
 
+Anyway this demo project is quite enjoyable. I like writing code in React and applying css to make it neat.
+
