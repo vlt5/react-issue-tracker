@@ -23,6 +23,6 @@ npm run test
 
 ## About
 I've been hesitating whether shall I use [Flux](https://facebook.github.io/flux/) or shall I use those existing components out there.(like [React Router](https://github.com/rackt/react-router)).  
-But finally I deceide to make it simple, passing down callback instead of flux and light weight client side routing libruary [page](https://visionmedia.github.io/page.js/).
+But finally I deceide to keep it simple, simply passing down callback instead of using flux and use light weight client-side routing libruary [page](https://visionmedia.github.io/page.js/) instead of react-router.
 
-In addition, there're many boilerplates out there that has integrate with React, ES6, live reload, gulp etc... But again, I kind of feel it's too much for this simple project. So I make my own boilerplate. And it turns out it's much more fun!
+In addition, there're many boilerplates out there that has already integrated with React, ES6, live reload, gulp etc... But again, I kind of feel it's too much for this simple project, so I make my own boilerplate. Whenever I need something, I just `npm install --save` it. And it's much more fun!
