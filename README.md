@@ -4,9 +4,6 @@ A sample issue viewer built with React with pagination. (Built with ES6, webpack
 
 ## Steps
 ```
-# clone this repo
-git clone https://github.com/vlt5/react-issue-tracker.git
-
 # installation
 npm install
 
